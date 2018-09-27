@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 use App\Post;
+use App\Country;
+use App\City;
+
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -16,13 +21,75 @@ class PostsController extends Controller
     {
         // $posts = Post::all();
         // $posts = Post::where('title', 'Post Two');
-        // $posts = Post::DB('select * from posts');        
+        // $posts = DB::select('select posts.id, posts.title, posts.body, cities.city_name, 
+        // countries.country_name, posts.created_at, posts.updated_at
+        // from posts
+        // inner join cities on posts.city_id = cities.id
+        // inner join countries on posts.country_id = countries.id'); 
+        
+        // $posts = Post::all();
 
         // $posts = Post::orderBy('title', 'desc')->take(10)->get();
 
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('posts.index')->with('posts', $posts);
+        // return view('posts.index')->with('posts', $posts);
+        
+        return view('posts.grid');
+        // echo Datatables::of(Post::all())->make(true);
+        // $query = Post::with(['city', 'country'])->select('posts.*');
+        // return Datatables::of($query)->make(true);
+    }
+
+    /**
+     * Displays datatables front end view
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getIndex()
+    {
+        
+        return view('posts.grid');
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        // return Datatables::of(Post::query())->make(true);
+        $query = Post::with(['city', 'country'])->select('posts.*');
+        // foreach($query as $q){
+
+        //     $doc = new DOMDocument();
+        //     $doc->loadHTML($q->body);
+            
+        //     $q->body = $doc->saveHTML();
+        //     $q->save();
+            
+        // }
+
+        // $query->body;
+        // $data = Datatables::of($query)->make(true);
+        // $data = Datatables::of($query)->make(true);
+        $data = Datatables::of($query)->toJson();
+
+
+        // echo "<pre>";
+        // print_r($query->first()->body);
+        // exit();
+        // foreach($data->data as $d){
+        //     // $doc = new DOMDocument();
+        //     // $doc->loadHTML($d->body);
+            
+        //     // $d->body = $doc->saveHTML();
+
+        //     // $d->body ='sad';
+            
+        // }
+        return $data;
     }
 
     /**
@@ -33,7 +100,11 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        $countries = Country::all();
+        $cities = City::all();
+
+
+        return view('posts.create')->with('countries', $countries)->with('cities', $cities);
     }
 
     /**
@@ -51,6 +122,9 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
+        $post->city_id = $request->input('city');
+        $post->country_id = $request->input('country');
+
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
