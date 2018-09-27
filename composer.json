@@ -11,6 +11,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "unisharp/laravel-ckeditor": "^4.7",
+        "unisharp/laravel-filemanager": "~1.8",
         "yajra/laravel-datatables": "^1.0",
         "yajra/laravel-datatables-oracle": "8.*"
     },
