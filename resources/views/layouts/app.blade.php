@@ -37,7 +37,24 @@
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'article-ckeditor' );
+        // CKFinder.setupCKEditor();
+        // CKEDITOR.replace( 'article-ckeditor', {
+        //     filebrowserBrowseUrl: '/browser/browse.php',
+        //     filebrowserUploadUrl: '/uploader/upload.php'
+        // });
+        // CKEDITOR.replace( 'editor1', {
+        //     filebrowserBrowseUrl: '/browser/browse.php',
+        //     filebrowserUploadUrl: '/uploader/upload.php'
+        // });
+
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+
+        CKEDITOR.replace( 'article-ckeditor', options);
     </script>
 
     <script>
