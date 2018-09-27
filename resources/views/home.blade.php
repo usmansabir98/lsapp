@@ -15,7 +15,8 @@
                     @endif
 
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
-                    <h3>Your Blog Posts</h3>
+                    <a href="/posts" class="btn btn-warning">View Post</a>
+
                 </div>
             </div>
         </div>

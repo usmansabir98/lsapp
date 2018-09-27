@@ -45,6 +45,8 @@
 
     <div class="container">
             <h3>Posts</h3>
+            <a href="/posts/create" class="btn btn-primary" style="float:right">Create New Post</a>
+
             <table data-order='[[ 0, "desc" ]]' id="table_id" class="display">
                 <thead>
                     <tr>
@@ -55,7 +57,7 @@
                         <th>Country</th>
                         <th>Created At</th>
                         <th>Updated At</th>
-                        <th>delete</th>
+                        <th>Options</th>
                     </tr>
                 </thead>
                 
