@@ -19,6 +19,9 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 
+Route::get('/posts', 'PostsController@getIndex');
+Route::get('/posts/data', 'PostsController@anyData')->name('posts.data');
+
 Route::resource('posts', 'PostsController');
 
 // Route::get('/about', function () {
@@ -28,6 +31,28 @@ Route::resource('posts', 'PostsController');
 // Route::get('/users/{id}/{name}', function ($id, $name) {
 //     return 'This is user '. $id . ' with name '. $name;
 // });
+
+Route::get('/ajax/{id}', 'CitiesController@getCity');
+Route::get('/ajax', 'PostsController@getData');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::resource('datatables', 'DatatablesController', [
+//     'anyData'  => 'datatables.data',
+//     'getIndex' => 'datatables',
+// ]);
+
+// Route::resource('datatables', 'DatatablesController');
+
+Route::get('datatables/data', 'DatatablesController@anyData')->name('datatables.data');
+Route::resource('datatables', 'DatatablesController');
+
+// Route::resource('photos', 'PhotoController')->names([
+//     'create' => 'photos.build'
+// ]);
+
+
