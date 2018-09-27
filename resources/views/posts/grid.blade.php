@@ -55,6 +55,7 @@
                         <th>Country</th>
                         <th>Created At</th>
                         <th>Updated At</th>
+                        <th>delete</th>
                     </tr>
                 </thead>
                 
@@ -106,7 +107,7 @@
                                 console.log(html);
                                 return html[0].data;
                             },
-                            "targets": 2
+                            "targets": [0,1,2,7]
                         },
                         { "visible": true,  "targets": [ 3 ] }
                     ],
@@ -115,10 +116,11 @@
                         { data: 'title', name: 'title' },
                         { data: 'body', name: 'body' },
                         { data: 'city.city_name', name: 'city.city_name' },
-                        { data: 'country.country_name', name: 'country.country_name' },
-                        
+                        { data: 'country.country_name', name: 'country.country_name' },   
                         { data: 'created_at', name: 'created_at' },
-                        { data: 'updated_at', name: 'updated_at' }
+                        { data: 'updated_at', name: 'updated_at' },
+                        { data: 'delete', name: 'delete' }
+
                     ]
                 });
             } );

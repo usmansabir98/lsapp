@@ -74,7 +74,11 @@ class PostsController extends Controller
         // $query->body;
         // $data = Datatables::of($query)->make(true);
         // $data = Datatables::of($query)->make(true);
-        $data = Datatables::of($query)->toJson();
+        $data = Datatables::of($query)
+                ->addColumn('delete', 'datatables.delete')
+                ->editColumn('id', '<a href="posts/{{$id}}/edit">{{$id}}</a>')
+                ->editColumn('title', '<a href="posts/{{$id}}/edit/">{{$title}}</a>')
+                ->toJson();
 
 
         // echo "<pre>";
