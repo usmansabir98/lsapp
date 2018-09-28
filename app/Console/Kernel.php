@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\WordOfTheDay::class,
     ];
 
     /**
@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->call(function () {
-            // DB::table('recent_users')->delete();
+        // $schedule->call(function () {
+        //     // DB::table('recent_users')->delete();
 
             // Create Post
             $post = new Post;
@@ -40,6 +40,9 @@ class Kernel extends ConsoleKernel
 
             $post->save();
         })->everyMinute();
+
+        // $schedule->command('word:day')
+        //     ->daily();
     }
 
     /**
