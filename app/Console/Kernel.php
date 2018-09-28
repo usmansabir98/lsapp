@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Post;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +27,19 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+            // DB::table('recent_users')->delete();
+
+            // Create Post
+            $post = new Post;
+            $post->title = 'Scheduled Post';
+            $post->body = 'Post Body';
+            $post->user_id = 1;
+            $post->city_id = 1;
+            $post->country_id = 1;
+
+            $post->save();
+        })->everyMinute();
     }
 
     /**
