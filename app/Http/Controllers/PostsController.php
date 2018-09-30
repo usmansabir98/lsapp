@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'grid', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -119,7 +130,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title'=>'required', 'body'=>'required']);
+        $this->validate($request, ['title'=>'required', 'body'=>'required', 'city' => 'required']);
 
         // Create Post
         $post = new Post;
@@ -170,7 +181,7 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, ['title'=>'required', 'body'=>'required']);
+        $this->validate($request, ['title'=>'required', 'body'=>'required', 'city' => 'required']);
 
         // Create Post
         $post = Post::find($id);
