@@ -33,9 +33,9 @@ class Kernel extends ConsoleKernel
             // Create Post
             $post = new Post;
             $post->title = 'Scheduled Post';
-            $post->body = 'Post Body';
+            $post->body = 'This is a scheduled post sample';
             $post->user_id = 1;
-            $post->city_id = 1;
+            $post->city_id = 2;
             $post->country_id = 1;
 
             $post->save();
