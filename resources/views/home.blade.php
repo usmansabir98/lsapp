@@ -13,9 +13,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <a href="/posts/create" class="btn btn-primary">Create Post</a>
-                    <a href="/posts" class="btn btn-warning">View Post</a>
+                    <div style="display:flex; justify-content: space-evenly;">
+                        <div>
+                            <img src='{{session('imageUrl')}}'/>
+                        </div>
+                        <div style="align-self:flex-end">
+                            <h2>{{session('profileName')}}</h2>
+                            <a href="/posts/create" class="btn btn-primary">Create Post</a>
+                            <a href="/posts" class="btn btn-warning">View Post</a>
+                        </div>
+                    </div>
+                    
 
                 </div>
             </div>

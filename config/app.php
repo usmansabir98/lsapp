@@ -162,7 +162,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
     ],
 
     /*
@@ -215,6 +215,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
     ],
 
 ];
