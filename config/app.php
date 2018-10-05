@@ -163,6 +163,7 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -216,6 +217,7 @@ return [
 
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
