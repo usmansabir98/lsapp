@@ -7,6 +7,8 @@
         {!!$post->body!!}
     </div>
     <small class="card-body">Written on {{$post->created_at}}</small>
+    <small class="card-body">No. of views: {{$views}}</small>
+
     <hr>
     <a href="/posts/{{$post->id}}/edit" class="btn btn-info" role="button">Edit</a>
 

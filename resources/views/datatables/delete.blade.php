@@ -1,5 +1,5 @@
 
-{{-- <a href="/posts/{{$id}}/edit" class="btn btn-info" role="button" style="width:100%;">Edit</a> --}}
+<a href="/posts/{{$id}}" class="btn btn-info" role="button" style="float:right;">View</a>
 {{-- @if(!Auth::guest()) --}}
 {!! Form::open(['action' => ['PostsController@destroy', $id], 'method'=>'POST', 'style'=> 'float:right;']) !!}
 

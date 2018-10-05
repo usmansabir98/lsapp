@@ -29,5 +29,27 @@
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Popular Posts</div>
+
+                <div class="card-body">
+                    
+                    @foreach ($posts as $post)
+                        <h1>{{$post->title}}</h1>
+
+                        <div>
+                            {!!$post->body!!}
+                        </div>
+                        <small class="card-body">Written on {{$post->created_at}}</small>
+                        <small class="card-body">No. of views: {{$post->views}}</small>
+                        <hr>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -9,6 +9,8 @@ use App\Country;
 use App\City;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
+
 
 class PostsController extends Controller
 {
@@ -153,9 +155,17 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        
         $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+
+        $redis = Redis::connection();
+        // $visits = Redis::incr('visits');
+
+        $views = $redis->incr('post:'.$id.':views');
+
+        $redis->zIncrBy('postViews', 1, 'post:'.$id);
+
+        return view('posts.show')->with('post', $post)->with('views', $views);
     }
 
     /**
@@ -202,6 +212,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
+
+        Redis::command('HDEL', ['visits:'.$id, 'visits']);
+
         return redirect('/posts')->with('success', 'Post Deleted');
         
     }

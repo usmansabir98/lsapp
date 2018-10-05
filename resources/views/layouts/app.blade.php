@@ -65,5 +65,35 @@
 
     <script src="{{ asset('js/create.js') }}"></script>
 
+    <script>
+    
+        // window.onbeforeunload = function (e) {
+        //     e = e || window.event;
+
+        //     // For IE and Firefox prior to version 4
+        //     if (e) {
+        //         e.returnValue = 'Are you sure?';
+        //     }
+
+        //     // For Safari
+        //     return 'Are you sure?';
+        // };
+
+        // window.onbeforeunload = function (evt) {
+        //     if (sncro != 1) {
+        //         var message = 'Are you sure you want to leave, cause there are some unsaved changes?';
+        //         if (typeof evt == 'undefined') {
+        //             evt = window.event;
+        //         }
+        //         if (evt ) {
+        //             evt.returnValue = message;
+        //         }
+        //         return message;
+        //     }
+        // }
+                
+
+    </script>
+
 </body>
 </html>
