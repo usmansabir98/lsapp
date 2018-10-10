@@ -62,7 +62,22 @@
                                 </a>
                             </div>
                         </div>
+
+                        
                     </form>
+
+                    <div class="row justify-content-center socialLoginContainer">
+                        
+
+                        <div class="col-12 col-sm-8 align-self-center">
+                            <div class="text-center">
+                                <a class="btn btn-social-icon btn-google" href={{ route('redirect', ['provider' => 'google']) }}><i class="fa fa-google-plus fa-3x"></i></a>
+                                <a class="btn btn-social-icon btn-facebook" href={{$login_url}}><i class="fa fa-facebook-square fa-3x"></i></a>
+                                <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                                <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter-square fa-3x"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

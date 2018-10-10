@@ -15,10 +15,15 @@
                     @endif
                     <div style="display:flex; justify-content: space-evenly;">
                         <div>
-                            <img src='{{session('imageUrl')}}'/>
+                            {{-- <img src='{{session('imageUrl')}}'/> --}}
+                            <img src='{{Auth::user()->image_url}}'/>
+                            <img src='{{Auth::user()->avatar_original}}' width="300px"/>
+
                         </div>
                         <div style="align-self:flex-end">
-                            <h2>{{session('profileName')}}</h2>
+                            {{-- <h2>{{session('profileName')}}</h2> --}}
+                            <h2>{{Auth::user()->name}}</h2>
+
                             <a href="/posts/create" class="btn btn-primary">Create Post</a>
                             <a href="/posts" class="btn btn-warning">View Post</a>
                         </div>
@@ -38,7 +43,7 @@
                 <div class="card-body">
                     
                     @foreach ($posts as $post)
-                        <h1>{{$post->title}}</h1>
+                <h1><a href="posts/{{$post->id}}">{{$post->title}}</a></h1>
 
                         <div>
                             {!!$post->body!!}
