@@ -43,7 +43,7 @@
     @include('inc.navbar')
     @include('inc.messages')
 
-    <div class="container">
+    <div class="container" style="margin-bottom: 100px;">
             <h3>Posts</h3>
             <a href="/posts/create" class="btn btn-primary" style="float:right">Create New Post</a>
 
@@ -62,7 +62,7 @@
                 </thead>
                 
             </table>
-</div>
+    </div>
 
         <!-- Load Jqgrid scripts in your scripts section -->
         {{-- {!! Jqgrid::scripts() !!}
